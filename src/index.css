@@ -2,8 +2,21 @@
   font-family: system-ui, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #111;
-  background: #fff;
+
+  --bg: #0f0d0c;
+  --surface: #171311;
+  --surface-light: #211a16;
+
+  --text: #f5f1ed;
+  --text-muted: #b9afa7;
+
+  --accent: #d98b3d;
+  --accent-hover: #f0a552;
+
+  --border: #352a24;
+
+  color: var(--text);
+  background: var(--bg);
 }
 
 * {
@@ -14,6 +27,8 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
 }
 
 button,

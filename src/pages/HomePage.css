@@ -1,0 +1,86 @@
+.home {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      rgba(8, 6, 5, 0.42),
+      rgba(8, 6, 5, 0.68)
+    ),
+    url('../assets/hero.png') center / cover no-repeat;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+
+  width: min(700px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1;
+  color: var(--text);
+}
+
+.hero p {
+  margin: 0;
+  max-width: 600px;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.hero input {
+  width: min(500px, 100%);
+  padding: 14px 16px;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  background: rgba(20, 16, 14, 0.92);
+  color: var(--text);
+
+  outline: none;
+}
+
+.hero input::placeholder {
+  color: #8f8580;
+}
+
+.hero input:focus {
+  border-color: var(--accent);
+}
+
+.popular {
+  padding: 48px 24px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.popular h2 {
+  margin: 0 0 24px;
+  color: var(--text);
+}
