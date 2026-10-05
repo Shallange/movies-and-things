@@ -1,4 +1,5 @@
 import "./HomePage.css";
+import PopularMoviesCarousel from "../components/PopularMoviesCarousel";
 
 function HomePage() {
   return (
@@ -17,6 +18,7 @@ function HomePage() {
 
       <section className="popular">
         <h2>Popular movies</h2>
+        <PopularMoviesCarousel />
       </section>
     </main>
   );

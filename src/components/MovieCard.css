@@ -1,0 +1,30 @@
+.movie-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-light);
+}
+
+.movie-card__poster {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.movie-card__info {
+  padding: 14px;
+}
+
+.movie-card__info h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.movie-card__meta {
+  display: flex;
+  justify-content: space-between;
+
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
