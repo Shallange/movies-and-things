@@ -7,12 +7,7 @@ type MovieCardProps = {
   poster: string;
 };
 
-function MovieCard({
-  title,
-  year,
-  rating,
-  poster,
-}: MovieCardProps) {
+function MovieCard({ title, year, rating, poster }: MovieCardProps) {
   return (
     <article className="movie-card">
       <img

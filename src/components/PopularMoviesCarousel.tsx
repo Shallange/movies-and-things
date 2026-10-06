@@ -4,46 +4,13 @@ import Autoplay from "embla-carousel-autoplay";
 
 import MovieCard from "./MovieCard";
 import "./PopularMoviesCarousel.css";
+import type { Movie } from "../types/movie";
 
-const movies = [
-  {
-    id: 1,
-    title: "Interstellar",
-    year: 2014,
-    rating: 8.7,
-    poster: "https://placehold.co/400x600/211a16/f5f1ed?text=Interstellar",
-  },
-  {
-    id: 2,
-    title: "Dune",
-    year: 2021,
-    rating: 8.0,
-    poster: "https://placehold.co/400x600/211a16/f5f1ed?text=Dune",
-  },
-  {
-    id: 3,
-    title: "Blade Runner 2049",
-    year: 2017,
-    rating: 8.0,
-    poster: "https://placehold.co/400x600/211a16/f5f1ed?text=Blade+Runner",
-  },
-  {
-    id: 4,
-    title: "The Batman",
-    year: 2022,
-    rating: 7.8,
-    poster: "https://placehold.co/400x600/211a16/f5f1ed?text=The+Batman",
-  },
-  {
-    id: 5,
-    title: "Arrival",
-    year: 2016,
-    rating: 7.9,
-    poster: "https://placehold.co/400x600/211a16/f5f1ed?text=Arrival",
-  },
-];
+type PopularMoviesCarouselProps = {
+  movies: Movie[];
+};
 
-function PopularMoviesCarousel() {
+function PopularMoviesCarousel({ movies }: PopularMoviesCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -69,12 +36,13 @@ function PopularMoviesCarousel() {
   useEffect(() => {
     if (!emblaApi) return;
 
-    updateSelectedIndex();
 
     emblaApi.on("select", updateSelectedIndex);
+    emblaApi.on("reInit", updateSelectedIndex);
 
     return () => {
       emblaApi.off("select", updateSelectedIndex);
+      emblaApi.off("reInit", updateSelectedIndex);
     };
   }, [emblaApi, updateSelectedIndex]);
 
@@ -91,9 +59,9 @@ function PopularMoviesCarousel() {
             >
               <MovieCard
                 title={movie.title}
-                year={movie.year}
-                rating={movie.rating}
-                poster={movie.poster}
+                year={Number(movie.release_date.slice(0, 4))}
+                rating={movie.vote_average}
+                poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               />
             </div>
           ))}
