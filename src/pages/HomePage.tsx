@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
-import "./HomePage.css";
+import { useNavigate } from "react-router";
 import PopularMoviesCarousel from "../components/PopularMoviesCarousel";
+import SearchBar from "../components/SearchBar";
 import { getPopularMovies } from "../api/tmdb";
 import type { Movie } from "../types/movie";
+import "./HomePage.css";
 
 function HomePage() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  function handleSearch(query: string) {
+    navigate(`/movies?query=${encodeURIComponent(query)}`);
+  }
 
   useEffect(() => {
     async function loadPopularMovies() {
@@ -33,7 +40,7 @@ function HomePage() {
           <h1>Movies & Things</h1>
           <p>Discover movies and find something worth watching.</p>
 
-          <input type="text" placeholder="Search for a movie..." />
+          <SearchBar onSearch={handleSearch} />
         </div>
       </section>
 
