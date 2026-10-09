@@ -6,3 +6,18 @@ export type Movie = {
   release_date: string;
   vote_average: number;
 };
+
+export type MovieDetails = {
+  id: number;
+  title: string;
+  overview: string;
+  poster_path: string | null;
+  backdrop_path: string | null;
+  release_date: string;
+  vote_average: number;
+  runtime: number;
+  genres: {
+    id: number;
+    name: string;
+  }[];
+};

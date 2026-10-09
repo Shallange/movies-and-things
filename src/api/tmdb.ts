@@ -1,4 +1,4 @@
-import type { Movie } from "../types/movie";
+import type { Movie, MovieDetails} from "../types/movie";
 
 type MoviesResponse = {
   results: Movie[];
@@ -31,4 +31,18 @@ export async function searchMovies(query: string): Promise<Movie[]> {
   const data: MoviesResponse = await response.json();
 
   return data.results;
+}
+
+export async function getMovieDetails(id: number): Promise<MovieDetails> {
+  const response = await fetch(
+    `${BASE_URL}/movie/${id}?api_key=${API_KEY}`
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch movie details");
+  }
+
+  const data: MovieDetails = await response.json();
+
+  return data;
 }
