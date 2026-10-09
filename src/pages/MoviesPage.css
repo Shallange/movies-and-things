@@ -1,0 +1,21 @@
+.movies-page {
+  min-height: 100vh;
+  padding: 48px 24px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.movies-page h1 {
+  margin: 0 0 32px;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.movies-page p {
+  color: var(--text-muted);
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+}
