@@ -1,6 +1,6 @@
 import type { Movie } from "../types/movie";
 
-type PopularMoviesResponse = {
+type MoviesResponse = {
   results: Movie[];
 };
 
@@ -14,7 +14,21 @@ export async function getPopularMovies(): Promise<Movie[]> {
     throw new Error("Failed to fetch popular movies");
   }
 
-  const data: PopularMoviesResponse = await response.json();
+  const data: MoviesResponse = await response.json();
+
+  return data.results;
+}
+
+export async function searchMovies(query: string): Promise<Movie[]> {
+  const response = await fetch(
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to search movies");
+  }
+
+  const data: MoviesResponse = await response.json();
 
   return data.results;
 }
