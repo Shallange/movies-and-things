@@ -4,6 +4,8 @@ import { useSearchParams } from "react-router";
 import { searchMovies } from "../api/tmdb";
 import type { Movie } from "../types/movie";
 
+import MovieCard from "../components/MovieCard";
+
 import "./MoviesPage.css";
 
 function MoviesPage() {
@@ -14,10 +16,7 @@ function MoviesPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!query) {
-      setMovies([]);
-      return;
-    }
+    if (!query) return;
 
     async function loadSearchResults() {
       try {
@@ -51,7 +50,20 @@ function MoviesPage() {
       {!loading && !error && movies.length > 0 && (
         <div className="movies-grid">
           {movies.map((movie) => (
-            <p key={movie.id}>{movie.title}</p>
+            <MovieCard
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              year={
+                movie.release_date ? Number(movie.release_date.slice(0, 4)) : 0
+              }
+              rating={movie.vote_average}
+              poster={
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                  : ""
+              }
+            />
           ))}
         </div>
       )}
