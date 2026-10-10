@@ -18,15 +18,16 @@ const cartSlice = createSlice({
     },
     removeItem: (
       state,
-      action: PayloadAction<{ id: number; productType: "movie" | "poster" }>
+      action: PayloadAction<{ id: number; productType: "movie" | "poster" }>,
     ) => {
-      state.items = state.items.filter(
+      const index = state.items.findIndex(
         (item) =>
-          !(
-            item.id === action.payload.id &&
-            item.productType === action.payload.productType
-          )
+          item.id === action.payload.id &&
+          item.productType === action.payload.productType,
       );
+      if (index !== -1) {
+        state.items.splice(index, 1);
+      }
     },
   },
 });

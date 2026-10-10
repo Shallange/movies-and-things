@@ -50,27 +50,6 @@
   color: var(--text-muted);
 }
 
-.hero input {
-  width: min(500px, 100%);
-  padding: 14px 16px;
-
-  border: 1px solid var(--border);
-  border-radius: 8px;
-
-  background: rgba(20, 16, 14, 0.92);
-  color: var(--text);
-
-  outline: none;
-}
-
-.hero input::placeholder {
-  color: #8f8580;
-}
-
-.hero input:focus {
-  border-color: var(--accent);
-}
-
 .popular {
   padding: 48px 24px;
   background: var(--surface);

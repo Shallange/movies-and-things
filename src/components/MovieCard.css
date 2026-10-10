@@ -21,12 +21,24 @@
   object-fit: cover;
 }
 
+.movie-card__poster--missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: var(--surface);
+  color: var(--text-muted);
+  text-align: center;
+}
+
 .movie-card__info {
   padding: 14px;
 }
 
 .movie-card__info h3 {
-  margin: 0 0 8px;
+  margin: 0;
+  min-height: 48px;
+  line-height: 1.4;
   font-size: 1rem;
 }
 

@@ -24,7 +24,7 @@ function MovieCard({ id, title, year, rating, poster }: MovieCardProps) {
 
           <div className="movie-card__meta">
             <span>{year}</span>
-            <span>★ {rating}</span>
+            <span>★ {rating.toFixed(1)}</span>
           </div>
         </div>
       </article>
